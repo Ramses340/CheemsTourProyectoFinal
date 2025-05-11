@@ -63,7 +63,7 @@ class TripFormActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCa
                     vibrator.vibrate(300)
                 }
 
-                val trip = Trip(null, name, city, country,0.0,0.0)
+                val trip = Trip(null, name, city, country, latitude, longitude)
                 val call = RetrofitUtil.getApi()!!.saveTrip(trip)
                 call.enqueue(object : Callback<Boolean> {
 

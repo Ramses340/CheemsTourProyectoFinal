@@ -1,6 +1,7 @@
 package mx.itson.cheemstour.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,8 @@ class TripAdapter(
         val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.elem_trip, parent, false)
 
         val trip = trips[position]
+
+
 
         val txtName = view.findViewById<TextView>(R.id.name)
         val txtCity = view.findViewById<TextView>(R.id.city)
