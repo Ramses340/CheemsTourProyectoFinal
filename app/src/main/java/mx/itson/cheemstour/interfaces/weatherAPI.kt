@@ -13,4 +13,5 @@ interface weatherAPI {
     fun getWeather(@Query("lat") lat: Double,
                    @Query("lon") lon: Double,
                    @Query("appid") appid: String): Call<Weather>
+
 }
