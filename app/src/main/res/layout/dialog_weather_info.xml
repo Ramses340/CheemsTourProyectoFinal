@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardWeatherInfo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="20dp">
+
+        <!-- Imagen del clima -->
+        <ImageView
+            android:id="@+id/imageWeatherIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/cheems" />
+
+        <TextView
+            android:id="@+id/textLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre del lugar: ---"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#212121" />
+
+        <TextView
+            android:id="@+id/textTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura: ---°C"
+            android:textSize="16sp"
+            android:textColor="#424242" />
+
+        <TextView
+            android:id="@+id/textDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clima: ---"
+            android:textSize="16sp"
+            android:textColor="#424242" />
+
+        <TextView
+            android:id="@+id/textHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Humedad: ---%"
+            android:textSize="16sp"
+            android:textColor="#424242" />
+
+        <TextView
+            android:id="@+id/textWind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Viento: --- m/s"
+            android:textSize="16sp"
+            android:textColor="#424242" />
+
+        <TextView
+            android:id="@+id/textClouds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nubosidad: ---%"
+            android:textSize="16sp"
+            android:textColor="#424242" />
+
+        <TextView
+            android:id="@+id/textLocalTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hora local: ---"
+            android:textSize="16sp"
+            android:textColor="#424242" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

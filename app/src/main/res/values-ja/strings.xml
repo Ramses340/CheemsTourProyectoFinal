@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CheemsTour</string>
+    <string name="text_welcome">ようこそ</string>
+    <string name="text_new">新しい旅行</string>
+    <string name="text_list">旅行リスト</string>
+    <string name="text_register">旅行を登録</string>
+    <string name="text_name">名前：</string>
+    <string name="text_city">都市：</string>
+    <string name="text_country">国：</string>
+    <string name="text_save">保存</string>
+    <string name="text_trip_saved">旅行は正常に保存されました</string>
+    <string name="text_not_saved">旅行を保存できませんでした</string>
+    <string name="text_complete">すべてのフィールドに入力してください</string>
+    <string name="text_map">地図</string>
+</resources>
