@@ -1,8 +1,9 @@
 package mx.itson.cheemstour.entities
 
 import android.content.Context
+import java.io.Serializable
 
-class Trip {
+class Trip : Serializable {
     var id: Int? = null
     var name: String? = null
     var city: String? = null
