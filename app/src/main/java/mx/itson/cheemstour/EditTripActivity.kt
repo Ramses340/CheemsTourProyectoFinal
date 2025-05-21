@@ -1,7 +1,8 @@
 package mx.itson.cheemstour
 
+import android.content.Context
 import android.content.Intent
-import android.os.Bundle
+import android.os.*
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -50,7 +51,6 @@ class EditTripActivity : AppCompatActivity() {
 
         // Configurar el botón para guardar cambios
         btnSave.setOnClickListener {
-            // Crear un nuevo objeto Trip con los datos actualizados
             val updatedTrip = Trip(
                 id = trip!!.id,
                 name = editName.text.toString(),
@@ -59,37 +59,77 @@ class EditTripActivity : AppCompatActivity() {
                 latitude = editLatitude.text.toString().toDouble(),
                 longitude = editLongitude.text.toString().toDouble()
             )
-            // Enviar la actualización al servidor
             updateTrip(updatedTrip)
         }
     }
 
     /**
      * Envía una solicitud para actualizar el viaje en el servidor mediante Retrofit.
-     * Muestra un mensaje de éxito o error según la respuesta.
-     *
-     *
+     * Muestra un mensaje de éxito o error con vibración según la respuesta.
      */
     private fun updateTrip(updatedTrip: Trip) {
         val call = RetrofitUtil.getApi()!!.updateTrip(updatedTrip.id, updatedTrip)
         call.enqueue(object : Callback<Boolean> {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                 if (response.isSuccessful && response.body() == true) {
-                    // Mostrar mensaje de éxito y volver a la lista de viajes
-                    Toast.makeText(this@EditTripActivity, getString(R.string.text_updated_successful), Toast.LENGTH_SHORT).show()
+                    vibrateStrong()
+                    Toast.makeText(
+                        this@EditTripActivity,
+                        "✅ ¡Viaje actualizado con éxito! 🎉",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     startActivity(Intent(this@EditTripActivity, TripListActivity::class.java))
                     finish()
                 } else {
-                    // Mostrar mensaje de error si la actualización falló
-                    Toast.makeText(this@EditTripActivity, getString(R.string.text_updated_error), Toast.LENGTH_SHORT).show()
+                    vibrateShort()
+                    Toast.makeText(
+                        this@EditTripActivity,
+                        "⚠️ No se pudo actualizar el viaje. Inténtalo de nuevo.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
             override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                // Registrar el error en Logcat y mostrar mensaje de error
+                vibrateShort()
                 Log.e("EditTripActivity", "Error actualizando viaje: ${t.message}")
-                Toast.makeText(this@EditTripActivity, getString(R.string.text_updated_error), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@EditTripActivity,
+                    "❌ Error al actualizar el viaje. Verifica tu conexión.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
     }
+
+    /**
+     * Vibración intensa para confirmaciones exitosas.
+     */
+    private fun vibrateStrong() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator.vibrate(
+                VibrationEffect.createOneShot(300, VibrationEffect.DEFAULT_AMPLITUDE)
+            )
+        } else {
+            val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            vibrator.vibrate(300)
+        }
+    }
+
+    /**
+     * Vibración corta para advertencias o errores.
+     */
+    private fun vibrateShort() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator.vibrate(
+                VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE)
+            )
+        } else {
+            val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            vibrator.vibrate(150)
+        }
+    }
 }
+
