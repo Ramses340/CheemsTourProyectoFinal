@@ -12,4 +12,15 @@
     <string name="text_not_saved">No se pudo guardar el viaje</string>
     <string name="text_complete">Por favor, completa todos los campos</string>
     <string name="text_map">Mapa</string>
+    <string name="text_deleted_successful">Viaje eliminado correctamente.</string>
+    <string name="text_deleted_error">No se pudo eliminar el viaje. Intenta nuevamente.</string>
+    <string name="text_updated_successful">Viaje actualizado correctamente.</string>
+    <string name="text_updated_error">No se pudo actualizar el viaje. Revisa los datos e intenta otra vez.</string>
+    <string name="text_saved_successful">Viaje guardado correctamente.</string>
+    <string name="text_saved_error">Hubo un error al guardar el viaje.</string>
+    <string name="text_delete">Eliminar</string>
+    <string name="text_edit">Editar</string>
+    <string name="text_latitude">Latitud:</string>
+    <string name="text_longitude">Longitud:</string>
+    <string name="text_saveChanges">Guardar Cambios</string>
 </resources>

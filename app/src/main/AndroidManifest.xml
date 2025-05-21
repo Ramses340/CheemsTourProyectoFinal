@@ -23,6 +23,7 @@
             android:exported="false" />
         <activity android:name=".TripListActivity" />
         <activity android:name=".TripFormActivity" />
+        <activity android:name=".EditTripActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
