@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activity_edit_trip"
+            android:name=".EditTripActivity"
             android:exported="false" />
         <activity
             android:name=".TripMapActivity"
