@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.BaseAdapter
 import android.widget.Button
+import mx.itson.cheemstour.EditTripActivity
 import mx.itson.cheemstour.R
 import mx.itson.cheemstour.TripListActivity
 import mx.itson.cheemstour.entities.Trip
