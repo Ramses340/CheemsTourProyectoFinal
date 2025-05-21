@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             R.drawable.china,
             R.drawable.cdmx,
             R.drawable.italia,
-            R.drawable.cdmx,
             R.drawable.brasil,
             R.drawable.japon,
             R.drawable.machu_picchu
