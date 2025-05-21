@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CheemsTour</string>
+    <string name="text_welcome">Benvenuto</string>
+    <string name="text_new">Nuovo viaggio</string>
+    <string name="text_list">Elenco viaggi</string>
+    <string name="text_register">Registra viaggio</string>-
+    <string name="text_name">Nome: </string>
+    <string name="text_city">Città: </string>
+    <string name="text_country">Paese: </string>
+    <string name="text_save">Salva</string>
+    <string name="text_trip_saved">Viaggio salvato con successo</string>
+    <string name="text_not_saved">Impossibile salvare il viaggio</string>
+    <string name="text_complete">Si prega di compilare tutti i campi</string>
+    <string name="text_map">Mappa</string>
+
+
+</resources>

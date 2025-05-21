@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CheemsTour</string>
+<string name="text_welcome">Welcome</string>
+<string name="text_new">New Trip</string>
+<string name="text_list">Travel List</string>"
+<string name="text_register">Register Trip</string>-
+<string name="text_name">Name: </string>
+<string name="text_city">City: </string>
+<string name="text_country">Country: </string>
+<string name="text_save">Save</string>
+<string name="text_trip_saved">Trip saved successfully</string>
+<string name="text_not_saved">Could not save trip</string>
+<string name="text_complete">Please complete all fields</string>
+<string name="text_map">Map</string>
+</resources>
