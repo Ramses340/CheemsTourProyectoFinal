@@ -21,5 +21,4 @@ interface CheemsAPI {
 
     @DELETE("trips/{id}")
     fun deleteTrip(@Path("id") id: Int): Call<Boolean>
-
 }

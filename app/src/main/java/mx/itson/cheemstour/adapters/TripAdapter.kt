@@ -38,31 +38,28 @@ class TripAdapter(
         var elemento = LayoutInflater.from(context).inflate(R.layout.elem_trip, null)
         try {
             val trip = getItem(position) as Trip
-
             val txtName: TextView = elemento.findViewById(R.id.name)
             txtName.text = trip.name
-
             val txtCity: TextView = elemento.findViewById(R.id.city)
             txtCity.text = trip.city
 
             val txtCountry: TextView = elemento.findViewById(R.id.country)
             txtCountry.text = trip.country
-
             val btnEdit: Button = elemento.findViewById(R.id.btnEdit)
             val btnDelete: Button = elemento.findViewById(R.id.btnDelete)
-
-
             btnDelete.setOnClickListener {
                 trip.id?.let { it1 -> (context as TripListActivity).deleteTrip(it1) }
             }
 
             btnEdit.setOnClickListener {
                 (context as TripListActivity).editTrip(trip)
+
+                val intent = Intent(context, EditTripActivity::class.java)
+                intent.putExtra("trip", trip)
+                context.startActivity(intent)
+
             }
 
-            val intent = Intent(context, EditTripActivity::class.java)
-            intent.putExtra("trip", trip)
-            context.startActivity(intent)
 
         } catch(ex: Exception) {
             Log.e("Error showing trips", ex.message.toString())
