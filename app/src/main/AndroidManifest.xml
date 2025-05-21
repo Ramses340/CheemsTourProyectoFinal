@@ -18,6 +18,7 @@
         android:theme="@style/Theme.CheemsTour"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".EditTripActivity"
             android:exported="false" />
@@ -26,13 +27,11 @@
             android:exported="false" />
         <activity android:name=".TripListActivity" />
         <activity android:name=".TripFormActivity" />
-        <activity android:name=".EditTripActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
