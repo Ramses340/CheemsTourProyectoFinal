@@ -8,6 +8,7 @@ import android.os.Vibrator
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
 
 /**
  * Actividad principal de la aplicación CheemsTour.
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity
  * - Ver la lista de viajes existentes.
  * - Ver los viajes en un mapa.
  *
+ * También contiene un carrusel de imágenes con destinos destacados.
+ *
  * Cada acción proporciona retroalimentación al usuario mediante Toasts interactivos
  * y una breve vibración del dispositivo.
  */
@@ -24,7 +27,8 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Método llamado al iniciar la actividad.
-     * Se encarga de inicializar la interfaz y configurar las acciones de los botones.
+     * Se encarga de inicializar la interfaz, configurar las acciones de los botones
+     * y cargar el carrusel de imágenes de destinos.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +38,26 @@ class MainActivity : AppCompatActivity() {
         val btnNew = findViewById<Button>(R.id.btn_new)
         val btnList = findViewById<Button>(R.id.btn_list)
         val btnMap = findViewById<Button>(R.id.btn_mapa)
+
+        // Obtener referencia al ViewPager2 del carrusel
+        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
+
+        // Lista de imágenes para el carrusel (ubicadas en res/drawable)
+        val images = listOf(
+            R.drawable.paris,
+            R.drawable.newyork,
+            R.drawable.china,
+            R.drawable.cdmx,
+            R.drawable.italia,
+            R.drawable.cdmx,
+            R.drawable.brasil,
+            R.drawable.japon,
+            R.drawable.machu_picchu
+
+        )
+
+        // Asignar el adaptador personalizado al ViewPager2
+        viewPager.adapter = CarouselAdapter(images)
 
         // Configurar el botón para crear un nuevo viaje
         btnNew.setOnClickListener {
@@ -82,3 +106,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+

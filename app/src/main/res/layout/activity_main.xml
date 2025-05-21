@@ -1,63 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
+    android:background="#FFFFFF"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:text="@string/text_welcome"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btn_new"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue"
-        android:text="@string/text_new"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"
-        android:padding="8dp"/>
+        <!-- Header -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/btn_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_list"
-        android:backgroundTint="@color/blue"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"
-        android:padding="8dp"/>
+            <TextView
+                android:text="Hola, Cheems,"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btn_mapa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_map"
-        android:backgroundTint="@color/blue"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"
-        android:padding="8dp"/>
+            <ImageView
+                android:id="@+id/profileImage"
+                android:src="@drawable/icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon"
+                android:scaleType="centerCrop" />
+        </LinearLayout>
 
+        <TextView
+            android:text="¿A dónde iremos hoy?"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="#0D1B4C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
 
+        <!-- Carrusel con ViewPager2 (opcional) -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp" />
 
+        <!-- Botones usando los mismos IDs de tu MainActivity -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
 
-</LinearLayout>
+            <Button
+                android:id="@+id/btn_new"
+                android:text="Nuevo Viaje"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btn_list"
+                android:text="Lista de viajes"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btn_mapa"
+                android:text="Mapa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!-- Tarjetas de destinos (puedes personalizar o eliminar si no lo necesitas) -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/paris" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Paris, Francia"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:src="@drawable/cdmx"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="CDMX, Mexico"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/newyork" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="New York, USA"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:src="@drawable/china"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Muralla China, China"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
