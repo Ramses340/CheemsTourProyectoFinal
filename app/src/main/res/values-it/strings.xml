@@ -1,19 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">CheemsTour</string>
+    <string name="app_name">CheemsTour</string> <!-- Il nome dell'app potrebbe non essere tradotto -->
     <string name="text_welcome">Benvenuto</string>
-    <string name="text_new">Nuovo viaggio</string>
-    <string name="text_list">Elenco viaggi</string>
-    <string name="text_register">Registra viaggio</string>-
-    <string name="text_name">Nome: </string>
-    <string name="text_city">Città: </string>
-    <string name="text_country">Paese: </string>
+    <string name="text_new">Nuovo Viaggio</string>
+    <string name="text_list">Lista Viaggi</string>
+    <string name="text_register">Registra Viaggio</string>
+    <string name="text_name">Nome:</string>
+    <string name="text_city">Città:</string>
+    <string name="text_country">Paese:</string>
     <string name="text_save">Salva</string>
     <string name="text_trip_saved">Viaggio salvato con successo</string>
     <string name="text_not_saved">Impossibile salvare il viaggio</string>
-    <string name="text_complete">Si prega di compilare tutti i campi</string>
+    <string name="text_complete">Per favore, completa tutti i campi</string>
     <string name="text_map">Mappa</string>
-
-
+    <string name="text_deleted_successful">Viaggio eliminato con successo</string>
+    <string name="text_deleted_error">Impossibile eliminare il viaggio. Riprova.</string>
+    <string name="text_updated_successful">Viaggio aggiornato con successo.</string>
+    <string name="text_updated_error">Impossibile aggiornare il viaggio. Controlla i dati e riprova.</string>
+    <string name="text_saved_successful">Viaggio salvato con successo.</string> <!-- Nota: questa chiave è simile a text_trip_saved -->
+    <string name="text_saved_error">Errore durante il salvataggio del viaggio.</string>
+    <string name="text_delete">Elimina</string>
+    <string name="text_edit">Modifica</string>
+    <string name="text_latitude">Latitudine:</string>
+    <string name="text_longitude">Longitudine:</string>
+    <string name="text_saveChanges">Salva Modifiche</string>
 </resources>

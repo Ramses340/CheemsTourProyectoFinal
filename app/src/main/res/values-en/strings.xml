@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CheemsTour</string>
-<string name="text_welcome">Welcome</string>
-<string name="text_new">New Trip</string>
-<string name="text_list">Travel List</string>"
-<string name="text_register">Register Trip</string>-
-<string name="text_name">Name: </string>
-<string name="text_city">City: </string>
-<string name="text_country">Country: </string>
-<string name="text_save">Save</string>
-<string name="text_trip_saved">Trip saved successfully</string>
-<string name="text_not_saved">Could not save trip</string>
-<string name="text_complete">Please complete all fields</string>
-<string name="text_map">Map</string>
+    <string name="text_welcome">Welcome</string>
+    <string name="text_new">New Trip</string>
+    <string name="text_list">Trip List</string>
+    <string name="text_register">Register Trip</string>
+    <string name="text_name">Name:</string>
+    <string name="text_city">City:</string>
+    <string name="text_country">Country:</string>
+    <string name="text_save">Save</string>
+    <string name="text_trip_saved">Trip saved successfully</string>
+    <string name="text_not_saved">Could not save trip</string>
+    <string name="text_complete">Please complete all fields</string>
+    <string name="text_map">Map</string>
+    <string name="text_deleted_successful">Trip deleted successfully</string>
+    <string name="text_deleted_error">Could not delete trip. Please try again.</string>
+    <string name="text_updated_successful">Trip updated successfully.</string>
+    <string name="text_updated_error">Could not update trip. Please check the data and try again.</string>
+    <string name="text_saved_successful">Trip saved successfully.</string> <!-- Note: This key is similar to text_trip_saved -->
+    <string name="text_saved_error">Error saving trip.</string>
+    <string name="text_delete">Delete</string>
+    <string name="text_edit">Edit</string>
+    <string name="text_latitude">Latitude:</string>
+    <string name="text_longitude">Longitude:</string>
+    <string name="text_saveChanges">Save Changes</string>
 </resources>
