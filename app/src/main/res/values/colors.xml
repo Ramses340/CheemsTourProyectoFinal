@@ -3,4 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#162aa6</color>
+    <color name="cold_blue">#ADD8E6</color>      <!-- Azul claro para temperaturas frías -->
+    <color name="mild_green">#DFFFD6</color>    <!-- Verde claro para clima templado -->
+    <color name="hot_red">#FFC1C1</color>       <!-- Rojo claro para calor -->
+
 </resources>

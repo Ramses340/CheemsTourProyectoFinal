@@ -23,4 +23,12 @@
     <string name="text_latitude">Latitudine:</string>
     <string name="text_longitude">Longitudine:</string>
     <string name="text_saveChanges">Salva Modifiche</string>
+    <string name="location_name">Posizione</string>
+    <string name="temperature">Temperatura</string>
+    <string name="weather_description">Descrizione</string>
+    <string name="humidity">Umidità</string>
+    <string name="wind">Vento</string>
+    <string name="clouds">Nubi</string>
+    <string name="local_time">Ora locale</string>
+
 </resources>

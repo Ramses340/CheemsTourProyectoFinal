@@ -23,4 +23,11 @@
     <string name="text_latitude">Latitud:</string>
     <string name="text_longitude">Longitud:</string>
     <string name="text_saveChanges">Guardar Cambios</string>
+    <string name="location_name">場所</string>
+    <string name="temperature">気温</string>
+    <string name="weather_description">説明</string>
+    <string name="humidity">湿度</string>
+    <string name="wind">風速</string>
+    <string name="clouds">雲量</string>
+    <string name="local_time">現地時間</string>
 </resources>

@@ -27,9 +27,14 @@ class TripListActivity : AppCompatActivity() {
         tripAdapter = TripAdapter(this, trips)
         listTrips?.adapter = tripAdapter
 
+        // Obtiene la lista de viajes desde el servidor
         getTrips()
     }
 
+    /**
+     * Elimina un viaje dado su ID.
+     * Muestra un Toast con el resultado y regresa a MainActivity si fue exitoso.
+     */
     fun deleteTrip(tripId: Int) {
         val context = this
         val call: Call<Boolean> = RetrofitUtil.getApi()!!.deleteTrip(tripId)
@@ -55,12 +60,18 @@ class TripListActivity : AppCompatActivity() {
         })
     }
 
+    /**
+     * Abre la actividad para editar un viaje pasando el objeto trip.
+     */
     fun editTrip(trip: Trip) {
         val intent = Intent(this, EditTripActivity::class.java)
         intent.putExtra("trip", trip)
         startActivity(intent)
     }
 
+    /**
+     * Solicita la lista de viajes al servidor y actualiza el adaptador.
+     */
     private fun getTrips() {
         val call: Call<List<Trip>> = RetrofitUtil.getApi()!!.getTrips()
         call.enqueue(object : Callback<List<Trip>> {
