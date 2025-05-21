@@ -62,16 +62,12 @@ class TripFormActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCa
 
             // Valida que los campos no estén vacíos
             if (name.isEmpty() || city.isEmpty() || country.isEmpty()) {
-                Toast.makeText(this, R.string.text_complete, Toast.LENGTH_SHORT).show()
+                // Muestra un Toast más amigable si hay campos vacíos
+                Toast.makeText(this, "¡Ups! Asegúrate de llenar todos los campos ✏️", Toast.LENGTH_SHORT).show()
+                vibrateShort()
             } else {
-                // Genera una vibración al guardar (con compatibilidad según la versión de Android)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
-                    vibratorManager.defaultVibrator.vibrate(VibrationEffect.createOneShot(300, VibrationEffect.DEFAULT_AMPLITUDE))
-                } else {
-                    val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-                    vibrator.vibrate(300)
-                }
+                // Vibración más intensa para confirmar guardado
+                vibrateStrong()
 
                 // Crea el objeto Trip con los datos capturados y las coordenadas seleccionadas en el mapa
                 val trip = Trip(null, name, city, country, latitude, longitude)
@@ -81,18 +77,48 @@ class TripFormActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCa
                 call.enqueue(object : Callback<Boolean> {
                     override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                         if (response.isSuccessful && response.body() == true) {
-                            Toast.makeText(this@TripFormActivity, R.string.text_trip_saved, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@TripFormActivity, "¡Viaje guardado con éxito! 🚀", Toast.LENGTH_SHORT).show()
                             finish()  // Cierra la actividad y vuelve a la anterior
                         } else {
-                            Toast.makeText(this@TripFormActivity, R.string.text_not_saved, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@TripFormActivity, "No se pudo guardar el viaje. Intenta de nuevo. 😓", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                        Toast.makeText(this@TripFormActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@TripFormActivity, "¡Error de conexión! Revisa tu internet 🌐", Toast.LENGTH_SHORT).show()
                     }
                 })
             }
+        }
+    }
+
+    /**
+     * Hace vibrar el dispositivo de forma corta para advertencias o errores menores.
+     */
+    private fun vibrateShort() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator.vibrate(
+                VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE)
+            )
+        } else {
+            val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            vibrator.vibrate(150)
+        }
+    }
+
+    /**
+     * Hace vibrar el dispositivo de forma más larga para confirmar acciones importantes.
+     */
+    private fun vibrateStrong() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator.vibrate(
+                VibrationEffect.createOneShot(300, VibrationEffect.DEFAULT_AMPLITUDE)
+            )
+        } else {
+            val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            vibrator.vibrate(300)
         }
     }
 
@@ -114,16 +140,20 @@ class TripFormActivity : AppCompatActivity(), View.OnClickListener, OnMapReadyCa
         map?.moveCamera(CameraUpdateFactory.newLatLng(latLng))
         map?.animateCamera(CameraUpdateFactory.zoomTo(8f))
 
+        // Permite que el usuario arrastre el marcador y actualiza las coordenadas
         map?.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
             override fun onMarkerDrag(p0: Marker) {
+                // No se necesita manejar este evento
             }
 
             override fun onMarkerDragEnd(marker: Marker) {
+                // Actualiza las coordenadas cuando el marcador se suelta
                 latitude = marker.position.latitude
                 longitude = marker.position.longitude
             }
 
             override fun onMarkerDragStart(p0: Marker) {
+                // No se necesita manejar este evento
             }
         })
     }

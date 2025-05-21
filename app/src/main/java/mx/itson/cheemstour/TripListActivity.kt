@@ -1,7 +1,8 @@
 package mx.itson.cheemstour
 
+import android.content.Context
 import android.content.Intent
-import android.os.Bundle
+import android.os.*
 import android.util.Log
 import android.widget.ListView
 import android.widget.Toast
@@ -13,6 +14,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Actividad que muestra la lista de viajes guardados.
+ * Permite editar o eliminar viajes.
+ */
 class TripListActivity : AppCompatActivity() {
 
     private var listTrips: ListView? = null
@@ -34,6 +39,7 @@ class TripListActivity : AppCompatActivity() {
     /**
      * Elimina un viaje dado su ID.
      * Muestra un Toast con el resultado y regresa a MainActivity si fue exitoso.
+     * También genera una vibración para dar retroalimentación al usuario.
      */
     fun deleteTrip(tripId: Int) {
         val context = this
@@ -43,19 +49,25 @@ class TripListActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val isDeleted = response.body() ?: false
                     if (isDeleted) {
-                        Toast.makeText(context, getString(R.string.text_deleted_successful), Toast.LENGTH_LONG).show()
+                        vibrateStrong()
+                        Toast.makeText(context, "✅ Viaje eliminado correctamente. ¡Buen trabajo!", Toast.LENGTH_LONG).show()
                         val intent = Intent(context, MainActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(context, getString(R.string.text_deleted_error), Toast.LENGTH_LONG).show()
+                        vibrateShort()
+                        Toast.makeText(context, "⚠️ No se pudo eliminar el viaje. Intenta de nuevo.", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Log.e("Error", "Failed to delete trip: ${response.code()}")
+                    vibrateShort()
+                    Log.e("Error", "Falló la eliminación: ${response.code()}")
+                    Toast.makeText(context, "⚠️ Error al eliminar el viaje. Código: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                Log.e("Error", "Error calling API: ${t.message}")
+                vibrateShort()
+                Log.e("Error", "Error al llamar API: ${t.message}")
+                Toast.makeText(context, "❌ No se pudo conectar con el servidor. Verifica tu red.", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -84,12 +96,44 @@ class TripListActivity : AppCompatActivity() {
                     }
                 } else {
                     Log.e("TripListActivity", "Respuesta fallida: ${response.code()}")
+                    Toast.makeText(this@TripListActivity, "🚫 Error al cargar los viajes. Intenta más tarde.", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<Trip>>, t: Throwable) {
                 Log.e("TripListActivity", "Error en la API: ${t.message}")
+                Toast.makeText(this@TripListActivity, "❌ Error de red al cargar los viajes.", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    /**
+     * Hace vibrar el dispositivo de forma breve para advertencias o errores.
+     */
+    private fun vibrateShort() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator.vibrate(
+                VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE)
+            )
+        } else {
+            val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            vibrator.vibrate(150)
+        }
+    }
+
+    /**
+     * Hace vibrar el dispositivo de forma más intensa para confirmaciones exitosas.
+     */
+    private fun vibrateStrong() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            vibratorManager.defaultVibrator.vibrate(
+                VibrationEffect.createOneShot(300, VibrationEffect.DEFAULT_AMPLITUDE)
+            )
+        } else {
+            val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            vibrator.vibrate(300)
+        }
     }
 }
