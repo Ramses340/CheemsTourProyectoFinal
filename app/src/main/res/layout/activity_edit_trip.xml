@@ -41,6 +41,8 @@
         android:id="@+id/btnSaveChanges"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_saveChanges" />
+        android:text="@string/text_saveChanges"
+        android:backgroundTint="@color/blue"
+        />
 
 </LinearLayout>
